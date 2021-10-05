@@ -16,7 +16,6 @@ class POSMachine {
 
     private fun processRandom() {
         val ordinal = Random.nextInt(Options.values().size)
-
         val option = Options.values()[ordinal]
 
         when(option) {
