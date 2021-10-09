@@ -1,8 +1,8 @@
-package option
+package processor
 
 import kotlin.system.exitProcess
 
-class OffOption {
+class OffProcessor {
 
     fun process() {
         println("포스기 종료!")
