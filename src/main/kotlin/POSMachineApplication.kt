@@ -6,11 +6,11 @@ class POSMachineApplication {
     fun run() {
         println("<< 포스기 시작 >>")
         while (true) {
-            selectCommand()
+            readCommand()
         }
     }
 
-    private fun selectCommand() {
+    private fun readCommand() {
         println(
             """
                 
