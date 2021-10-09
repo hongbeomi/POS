@@ -1,11 +1,11 @@
 package processor
 
-import calculator.PayPriceCalculator
+import calculator.PriceCalculator
 import menu.PayMenuSelector
 import util.formatPlusWon
 
 class PayProcessor(
-    private val calculator: PayPriceCalculator = PayPriceCalculator(),
+    private val calculator: PriceCalculator = PriceCalculator(),
     private val selector: PayMenuSelector = PayMenuSelector()
 )  {
 

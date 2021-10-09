@@ -1,11 +1,11 @@
 package processor
 
-import calculator.OrderPriceCalculator
+import calculator.PriceCalculator
 import menu.OrderMenuSelector
 import util.formatPlusWon
 
 class OrderProcessor(
-    private val calculator: OrderPriceCalculator = OrderPriceCalculator(),
+    private val calculator: PriceCalculator = PriceCalculator(),
     private val selector: OrderMenuSelector = OrderMenuSelector()
 )  {
 

@@ -2,7 +2,7 @@ package calculator
 
 import menu.Menu
 
-class OrderPriceCalculator {
+class PriceCalculator {
 
     fun calculate(menuList: List<Menu>): Int {
         var sumPrice = 0
