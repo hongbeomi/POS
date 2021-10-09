@@ -4,5 +4,5 @@ enum class Command {
     ORDER,
     PAY,
     CASHUP,
-    OFF,
+    EXIT,
 }

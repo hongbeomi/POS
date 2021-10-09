@@ -35,7 +35,7 @@ class POSMachineApplication {
                 Command.ORDER -> OrderProcessor().process()
                 Command.PAY -> PayProcessor().process()
                 Command.CASHUP -> CashUpProcessor().process()
-                else -> OffProcessor().process()
+                else -> ExitProcessor().process()
             }
         }
     }
