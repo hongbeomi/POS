@@ -6,11 +6,11 @@ class POSMachineApplication {
     fun run() {
         println("<< 포스기 시작 >>")
         while (true) {
-            selectOption()
+            selectCommand()
         }
     }
 
-    private fun selectOption() {
+    private fun selectCommand() {
         println(
             """
                 
@@ -22,10 +22,10 @@ class POSMachineApplication {
             """.trimIndent()
         )
         val input = readLine()
-        startProcess(input)
+        runProcess(input)
     }
 
-    private fun startProcess(input: String?) {
+    private fun runProcess(input: String?) {
         val ordinal = input?.toIntOrNull()
 
         if (ordinal == null || (ordinal - 1) !in 0 until Command.values().size) {
