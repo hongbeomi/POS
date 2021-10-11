@@ -1,11 +1,14 @@
 package processor
 
+import printer.ExitPrinter
 import kotlin.system.exitProcess
 
-class ExitProcessor {
+class ExitProcessor(
+    private val printer: ExitPrinter = ExitPrinter()
+) {
 
     fun process() {
-        println("포스기 종료!")
+        printer.print()
         exitProcess(0)
     }
 

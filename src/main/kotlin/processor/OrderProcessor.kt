@@ -2,11 +2,12 @@ package processor
 
 import calculator.PriceCalculator
 import menu.OrderMenuSelector
-import util.formatPlusWon
+import printer.OrderPrinter
 
 class OrderProcessor(
     private val calculator: PriceCalculator = PriceCalculator(),
-    private val selector: OrderMenuSelector = OrderMenuSelector()
+    private val selector: OrderMenuSelector = OrderMenuSelector(),
+    private val printer: OrderPrinter = OrderPrinter()
 )  {
 
     fun process() {
@@ -14,9 +15,9 @@ class OrderProcessor(
 
         if (selectedMenuList.isNotEmpty()) {
             val allPrice = calculator.calculate(selectedMenuList)
-            println("총 ${allPrice.formatPlusWon()}의 음식들이 주문되었습니다!")
+            printer.printOrder(allPrice)
         } else {
-            println("주문한 메뉴가 없습니다.")
+            printer.printError()
         }
     }
 

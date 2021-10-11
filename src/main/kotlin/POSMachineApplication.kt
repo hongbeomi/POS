@@ -1,26 +1,20 @@
 import processor.*
 import command.Command
+import printer.POSMachinePrinter
 
-class POSMachineApplication {
+class POSMachineApplication(
+    private val printer: POSMachinePrinter = POSMachinePrinter()
+) {
 
     fun run() {
-        println("<< 포스기 시작 >>")
+        printer.printRun()
         while (true) {
             readCommand()
         }
     }
 
     private fun readCommand() {
-        println(
-            """
-                
-                - 진행할 작업을 선택해주세요 -
-                1. 주문하기
-                2. 계산하기
-                3. 정산하기
-                4. 종료하기
-            """.trimIndent()
-        )
+        printer.printCommand()
         val input = readLine()
         runProcess(input)
     }
@@ -34,7 +28,7 @@ class POSMachineApplication {
             when (Command.values()[ordinal - 1]) {
                 Command.ORDER -> OrderProcessor().process()
                 Command.PAY -> PayProcessor().process()
-                Command.CASHUP -> CashUpProcessor().process()
+                Command.CASH_UP -> CashUpProcessor().process()
                 else -> ExitProcessor().process()
             }
         }

@@ -3,6 +3,6 @@ package command
 enum class Command {
     ORDER,
     PAY,
-    CASHUP,
+    CASH_UP,
     EXIT,
 }
