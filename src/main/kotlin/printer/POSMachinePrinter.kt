@@ -1,12 +1,12 @@
 package printer
 
-class POSMachinePrinter {
+class POSMachinePrinter : Printer {
 
-    fun printRun() {
+    fun start() {
         println("<< 포스기 시작 >>")
     }
 
-    fun printCommand() {
+    override fun print(argument: Any?) {
         println(
             """
                 

@@ -1,12 +1,13 @@
 package processor
 
 import printer.CashUpPrinter
+import printer.Printer
 
 class CashUpProcessor(
-    private val printer: CashUpPrinter = CashUpPrinter()
-)  {
+    private val printer: Printer = CashUpPrinter()
+) : Processor {
 
-    fun process() {
+    override fun process() {
         val revenue = 1500000
         printer.print(revenue)
     }

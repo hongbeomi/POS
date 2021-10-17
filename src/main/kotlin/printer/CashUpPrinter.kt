@@ -2,9 +2,12 @@ package printer
 
 import util.formatPlusWon
 
-class CashUpPrinter {
+class CashUpPrinter : Printer {
 
-    fun print(revenue: Int) {
+    override fun print(argument: Any?) {
+        val revenue = argument as? Int
+        revenue ?: return
+
         println(
             """
                 - 정산을 시작합니다 -

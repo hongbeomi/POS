@@ -7,14 +7,14 @@ class POSMachineApplication(
 ) {
 
     fun run() {
-        printer.printRun()
+        printer.start()
         while (true) {
             readCommand()
         }
     }
 
     private fun readCommand() {
-        printer.printCommand()
+        printer.print()
         val input = readLine()
         runProcess(input)
     }

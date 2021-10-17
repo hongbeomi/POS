@@ -1,8 +1,8 @@
 package printer
 
-class OrderMenuPrinter {
+class OrderMenuPrinter: MenuPrinter() {
 
-    fun printCommand() {
+    override fun printMenu() {
         println(
             """
                     
@@ -17,11 +17,10 @@ class OrderMenuPrinter {
         )
     }
 
-    fun printError() {
-        println("유효하지 않은 입력입니다\n")
-    }
+    override fun print(argument: Any?) {
+        val selectedName = argument as? String
+        selectedName ?: return
 
-    fun printSelectedName(selectedName: String) {
         println("${selectedName}가(이) 주문되었습니다. 추가 주문을 완료해주세요")
     }
 

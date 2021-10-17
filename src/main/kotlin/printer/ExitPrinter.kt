@@ -1,8 +1,8 @@
 package printer
 
-class ExitPrinter {
+class ExitPrinter: Printer {
 
-    fun print() {
+    override fun print(argument: Any?) {
         println("포스기 종료!")
     }
 
