@@ -6,7 +6,20 @@ import printer.PayPrinter
 import printer.Printer
 
 class PayProcessor(
-    calculator: PriceCalculator = PriceCalculator(),
-    selector: PayMenuSelector = PayMenuSelector(),
-    printer: Printer = PayPrinter()
-)  : MenuProcessor(calculator, selector, printer)
+    private val calculator: PriceCalculator = PriceCalculator(),
+    private val selector: PayMenuSelector = PayMenuSelector(),
+    private val printer: Printer = PayPrinter()
+) : Processor {
+
+    override fun process() {
+        val selectedMenuList = selector.select()
+
+        if (selectedMenuList.isNotEmpty()) {
+            val allPrice = calculator.calculate(selectedMenuList)
+            printer.print(allPrice)
+        } else {
+            printer.error()
+        }
+    }
+
+}
