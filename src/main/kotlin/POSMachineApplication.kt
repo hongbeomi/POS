@@ -26,7 +26,6 @@ class POSMachineApplication(
             return
         } else {
             when (Command.values()[ordinal - 1]) {
-                Command.ORDER -> OrderProcessor().process()
                 Command.PAY -> PayProcessor().process()
                 Command.CASH_UP -> CashUpProcessor().process()
                 else -> ExitProcessor().process()

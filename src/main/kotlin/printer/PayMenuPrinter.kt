@@ -1,6 +1,6 @@
 package printer
 
-class PayMenuPrinter: MenuPrinter() {
+class PayMenuPrinter: MenuPrinter {
 
     override fun printMenu() {
         println(

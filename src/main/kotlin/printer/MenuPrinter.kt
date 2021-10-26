@@ -1,7 +1,7 @@
 package printer
 
-abstract class MenuPrinter: Printer {
+interface MenuPrinter: Printer {
 
-    abstract fun printMenu()
+    fun printMenu()
 
 }
