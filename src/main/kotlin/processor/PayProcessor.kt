@@ -1,5 +1,7 @@
 package processor
 
+import model.PayData
+import StrongBox
 import calculator.PriceCalculator
 import menu.PayMenuSelector
 import printer.PayPrinter
@@ -8,7 +10,8 @@ import printer.Printer
 class PayProcessor(
     private val calculator: PriceCalculator = PriceCalculator(),
     private val selector: PayMenuSelector = PayMenuSelector(),
-    private val printer: Printer = PayPrinter()
+    private val printer: Printer = PayPrinter(),
+    private val strongBox: StrongBox = StrongBox
 ) : Processor {
 
     override fun process() {
@@ -16,7 +19,11 @@ class PayProcessor(
 
         if (selectedMenuList.isNotEmpty()) {
             val allPrice = calculator.calculate(selectedMenuList)
-            printer.print(allPrice)
+            val amount = strongBox.plusAmount(allPrice)
+
+            val payData = PayData(allPrice, amount)
+
+            printer.print(payData)
         } else {
             printer.error()
         }
