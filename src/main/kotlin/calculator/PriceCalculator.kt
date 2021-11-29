@@ -1,6 +1,6 @@
 package calculator
 
-import menu.Menu
+import model.Menu
 
 class PriceCalculator {
 

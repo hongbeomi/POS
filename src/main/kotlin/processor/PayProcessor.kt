@@ -1,31 +1,29 @@
 package processor
 
-import pay.Pay
+import model.Pay
 import strong_box.StrongBox
 import calculator.PriceCalculator
-import menu.PayMenuSelector
-import printer.PayPrinter
-import printer.Printer
+import model.Menu
 
 class PayProcessor(
     private val calculator: PriceCalculator = PriceCalculator(),
-    private val selector: PayMenuSelector = PayMenuSelector(),
-    private val printer: Printer = PayPrinter(),
     private val strongBox: StrongBox = StrongBox
-) : Processor {
+) : Processor<Pay?> {
 
-    override fun process() {
-        val selectedMenuList = selector.select()
+    private val selectedMenuList: MutableList<Menu> = mutableListOf()
 
-        if (selectedMenuList.isNotEmpty()) {
+    fun updateSelectedMenuList(values: List<Menu>) {
+        selectedMenuList.clear()
+        selectedMenuList.addAll(values)
+    }
+
+    override fun process(): Pay? {
+        return if (selectedMenuList.isNotEmpty()) {
             val allPrice = calculator.calculate(selectedMenuList)
             val amount = strongBox.plusAmount(allPrice)
-
-            val payData = Pay(allPrice, amount)
-
-            printer.print(payData)
+            Pay(allPrice, amount)
         } else {
-            printer.error()
+            null
         }
     }
 

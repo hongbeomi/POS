@@ -1,5 +1,5 @@
 package processor
 
-interface Processor {
-    fun process()
+interface Processor<T> {
+    fun process(): T
 }
