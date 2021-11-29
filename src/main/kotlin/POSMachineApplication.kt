@@ -1,11 +1,9 @@
 import processor.*
 import command.Command
 import printer.POSMachinePrinter
-import reader.CommandReader
 
 class POSMachineApplication(
     private val printer: POSMachinePrinter = POSMachinePrinter(),
-    private val reader: CommandReader = CommandReader(),
     private val payProcessor: PayProcessor = PayProcessor(),
     private val cashUpProcessor: CashUpProcessor = CashUpProcessor(),
     private val exitProcessor: ExitProcessor = ExitProcessor()
@@ -24,15 +22,13 @@ class POSMachineApplication(
         while (true) {
             printer.print()
 
-            reader.readInt(
-                correctCondition = commandCorrectCondition,
-                onSuccess = {
-                    runProcess(it)
-                },
-                onFailure = {
-                    return@readInt
-                }
-            )
+            val ordinal = readLine()?.toIntOrNull()
+
+            if (ordinal != null && commandCorrectCondition.invoke(ordinal)) {
+                runProcess(ordinal)
+            } else {
+                continue
+            }
         }
     }
 

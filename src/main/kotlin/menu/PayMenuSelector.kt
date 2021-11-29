@@ -4,8 +4,12 @@ import printer.MenuPrinter
 import printer.PayMenuPrinter
 
 class PayMenuSelector(
-    val printer: MenuPrinter = PayMenuPrinter()
+    private val printer: MenuPrinter = PayMenuPrinter()
 ) {
+
+    private val menuCorrectCondition: (Int) -> Boolean = {
+        (it - 1) in 0 until Menu.values().size
+    }
 
     fun select(): MutableList<Menu> {
         val menuList = mutableListOf<Menu>()
@@ -15,15 +19,15 @@ class PayMenuSelector(
             val ordinal = readLine()?.toIntOrNull()
 
             when {
-                ordinal == 5 -> break
-                ordinal == null || (ordinal - 1) !in 0 until Menu.values().size -> {
-                    printer.error()
-                    continue
-                }
-                else -> {
+                ordinal != null && menuCorrectCondition.invoke(ordinal) -> {
                     val menu = Menu.values()[ordinal - 1]
                     printer.print(menu.nameKR)
                     menuList.add(menu)
+                }
+                ordinal == 5 -> break
+                else -> {
+                    printer.error()
+                    continue
                 }
             }
         }
