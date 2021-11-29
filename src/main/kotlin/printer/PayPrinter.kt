@@ -1,6 +1,6 @@
 package printer
 
-import model.PayData
+import pay.Pay
 import util.formatPlusWon
 
 class PayPrinter : Printer {
@@ -8,7 +8,7 @@ class PayPrinter : Printer {
     override val errorText: String = "선택된 메뉴가 없습니다."
 
     override fun print(argument: Any?) {
-        val payData = argument as? PayData
+        val payData = argument as? Pay
         payData ?: return
 
         println("총 ${payData.allPrice.formatPlusWon()}이 결제되었습니다!")

@@ -1,6 +1,6 @@
 package processor
 
-import StrongBox
+import strong_box.StrongBox
 import printer.CashUpPrinter
 import printer.Printer
 
@@ -10,7 +10,7 @@ class CashUpProcessor(
 ) : Processor {
 
     override fun process() {
-        val revenue = strongBox.amount
+        val revenue = strongBox.currentAmount()
         printer.print(revenue)
     }
 

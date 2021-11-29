@@ -1,7 +1,7 @@
 package processor
 
-import model.PayData
-import StrongBox
+import pay.Pay
+import strong_box.StrongBox
 import calculator.PriceCalculator
 import menu.PayMenuSelector
 import printer.PayPrinter
@@ -21,7 +21,7 @@ class PayProcessor(
             val allPrice = calculator.calculate(selectedMenuList)
             val amount = strongBox.plusAmount(allPrice)
 
-            val payData = PayData(allPrice, amount)
+            val payData = Pay(allPrice, amount)
 
             printer.print(payData)
         } else {

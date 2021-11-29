@@ -1,6 +1,6 @@
-package model
+package pay
 
-data class PayData(
+data class Pay(
     val allPrice: Int,
     val amount: Int
 )
